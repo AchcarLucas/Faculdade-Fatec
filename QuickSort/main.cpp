@@ -19,8 +19,8 @@ template <class T>
 void quickSort(T *order, uint32_t start, uint32_t end){
     if(start < end){
         uint32_t pivot = particione(order, start, end);
-        quickSort(order, start, pivot - 1);
-        quickSort(order, pivot + 1, end);
+        quickSort(order, start, end - 1);
+        quickSort(order, start + 1, end);
     }
 }
 
@@ -41,7 +41,8 @@ uint32_t particione(T *order, uint32_t start, uint32_t end){
 }
 
 int main(){
-    float order[] = {1, 10.5, 10.4, 50, 20, 48, 30, 24, 42, 41, 42, 2, 3, 4};
+    //float order[] = {1, 10.5, 10.4, 50, 20, 48, 30, 24, 42, 41, 42, 2, 3, 4};
+    float order[] = {10, 9, 5, 8, 7, 2, 3, 5, 1};
     uint32_t order_length = static_cast<uint32_t>(sizeof(order)) / sizeof(float);
     sort<float>(order, order_length);
     for(uint32_t i = 0; i < order_length; i++){

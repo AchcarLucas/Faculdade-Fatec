@@ -6,7 +6,7 @@ template <class T>
 void quickSort(T *order, uint32_t start, uint32_t end);
 
 template <class T>
-void particione(T *order, uint32_t start, uint32_t end);
+uint32_t particione(T *order, uint32_t start, uint32_t end);
 
 template <class T>
 void sort(T *order, uint32_t length){
@@ -18,14 +18,14 @@ void sort(T *order, uint32_t length){
 template <class T>
 void quickSort(T *order, uint32_t start, uint32_t end){
     if(start < end){
-        particione(order, start, end);
-        quickSort(order, start, end - 1);
-        quickSort(order, start + 1, end);
+        uint32_t pivot = particione(order, start, end);
+        quickSort(order, start, pivot - 1);
+        quickSort(order, pivot + 1, end);
     }
 }
 
 template <class T>
-void particione(T *order, uint32_t start, uint32_t end){
+uint32_t particione(T *order, uint32_t start, uint32_t end){
     T pivot = order[end];
     uint32_t index = start; // current pivot wall
 
@@ -37,6 +37,7 @@ void particione(T *order, uint32_t start, uint32_t end){
     }
 
     swap(order[index], order[end]);
+	return index;
 }
 
 int main(){
